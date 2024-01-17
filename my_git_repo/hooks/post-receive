@@ -1,0 +1,12 @@
+#!/bin/bash
+while read oldrev newrev ref
+do
+    branch=$(git rev-parse --symbolic --abbrev-ref $ref)
+    if [ "$branch" == "master" ]; then
+        echo "Deploying changes..."
+        unset GIT_DIR
+        /path/to/ansible-playbook /path/to/my_playbook.yml
+        echo "Deployment complete."
+    fi
+done
+

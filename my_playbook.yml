@@ -1,0 +1,15 @@
+# my_playbook.yml
+---
+- name: Install and configure Apache
+  hosts: localhost
+  become: true
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+
+    - name: Install Apache
+      apt:
+        name: apache2
+        state: present
+
